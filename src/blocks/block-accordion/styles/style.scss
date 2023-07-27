@@ -1,0 +1,114 @@
+/**
+ * Accordion styles
+ * Loads on front end and back end
+ */
+
+.lsx-block-accordion {
+	margin-bottom: 2em;
+	background: $graybg;
+	border: 2px solid #e0e0e0;
+	border-radius: 3px;
+	color: $testblack;
+	details {
+		summary {
+			transition: 0.3s;
+			display: flex;
+			justify-content: space-between;
+			~ * {
+				animation: sweep 0.5s ease-in-out;
+			}
+			&::-webkit-details-marker {
+				display: none;
+			}
+			&:after {
+				content: "+";
+				color: $blue;
+				font-size: 25px;
+				font-weight: bold;
+				line-height: 25px;
+				float: right;
+				align-self: center;
+			}
+			&:hover {
+				background-color: #e0e0e0;
+			}
+		}
+		&[open] {
+			summary {
+				background-color: #e0e0e0;
+				&:after {
+					content: "-";
+				}
+			}
+		}
+	}
+
+	.lsx-accordion-title {
+		padding: 10px 15px;
+		font-weight: bold;
+		&:hover {
+			cursor: pointer;
+		}
+		p {
+			display: inline;
+		}
+	}
+
+	.lsx-accordion-text {
+		padding: 10px 15px;
+		background-color: white;
+		p:not(.has-text-color) {
+			color: $testblack;
+		}
+		> * {
+			width: 100%;
+			max-width: 100% !important;
+			margin-bottom: 10px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		a {
+			color: inherit;
+			box-shadow: 0 -1px 0 inset;
+			text-decoration: none;
+
+			&:hover {
+				color: inherit;
+				box-shadow: 0 -2px 0 inset;
+			}
+		}
+	}
+
+	a {
+		color: inherit;
+		box-shadow: 0 -1px 0 inset;
+		text-decoration: none;
+
+		&:hover {
+			color: inherit;
+			box-shadow: 0 -2px 0 inset;
+		}
+	}
+
+	.editor-rich-text .editor-rich-text__inline-toolbar,
+	.block-editor-rich-text .block-editor-rich-text__inline-toolbar {
+		display: block;
+		left: 40%;
+	}
+}
+
+@keyframes sweep {
+	0% {
+		opacity: 0;
+		margin-bottom: -10px;
+	}
+	100% {
+		opacity: 1;
+		margin-bottom: 0px;
+	}
+}
+
+.lsx-block-accordion + .lsx-block-accordion {
+	margin-top: -0.6em;
+}
