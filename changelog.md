@@ -1,9 +1,17 @@
 # Change log
 
-## [1.3.2](https://github.com/lightspeeddevelopment/lsx-blocks/releases/tag/1.3.2) - In Development
+## [1.3.3](https://github.com/lightspeeddevelopment/lsx-blocks/releases/tag/1.3.3) - 2023-08-09
+
+### Security
+- General testing to ensure compatibility with latest WordPress version (6.3).
+
+## [1.3.2](https://github.com/lightspeeddevelopment/lsx-blocks/releases/tag/1.3.2) - 2023-04-20
 
 ### Added
 - Added in the Block transformation for the LSX Container block to a Group Block.
+
+### Security
+- General testing to ensure compatibility with latest WordPress version (6.2).
 
 ## [1.3.1](https://github.com/lightspeeddevelopment/lsx-blocks/releases/tag/1.3.1) - 27-05-2022
 
