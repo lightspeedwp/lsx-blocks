@@ -35,8 +35,11 @@ class Block_Setup {
 	}
 
 	public function init() {
+		add_action( 'init', array( $this, 'register_block_styles' ), 10 );
 		add_action( 'init', array( $this, 'register_block_pattern_category' ) );
 		add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
+
+		// Asset Files.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'block_editor_assets' ), 5 );
 		add_action( 'after_setup_theme', array( $this, 'enqueue_block_styles' ), 10 );
 	}
@@ -112,6 +115,32 @@ class Block_Setup {
 					'path'   => $block_asset['path'],
 				),
 			);
+		}
+	}
+
+	/**
+	 * Register our block styles.
+	 *
+	 * @return void
+	 */
+	public function register_block_styles() {
+
+		$block_styles = array(
+			'lsx/loginout' => array(
+				'horizontal' => __( 'Horizontal', 'lsx-design' ),
+			),
+		);
+
+		foreach ( $block_styles as $block => $styles ) {
+			foreach ( $styles as $style_name => $style_label ) {
+				register_block_style(
+					$block,
+					array(
+						'name'  => $style_name,
+						'label' => $style_label,
+					)
+				);
+			}
 		}
 	}
 }
