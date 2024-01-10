@@ -39,16 +39,21 @@ class Core {
 	}
 
 	public function init() {
+		add_action( 'init', array( $this, 'register_textdomain' ) );
 		$this->load_classes();
+	}
+
+	/**
+	 * Load the plugin textdomain
+	 */
+	public function register_textdomain() {
+		load_plugin_textdomain( 'lsx-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
 	 * Loads the variable classes and the static classes.
 	 */
 	private function load_classes() {
-		require_once( LSX_BLOCKS_PATH . 'includes/classes/class-setup.php' );
-		$this->setup = new Setup();
-		
 		require_once( LSX_BLOCKS_PATH . 'includes/classes/class-block-setup.php' );
 		$this->block_setup = new Block_Setup();
 		$this->block_setup->init();

@@ -8,7 +8,7 @@ import './blocks/featured-posts/index.js';
 import './blocks/related-posts/index.js';
 
 // Custom Blocks
-import './blocks/block-accordion/index.js';
+import './blocks/accordion/index.js';
 import './blocks/loginout/index.js';
 
 // Deprecated

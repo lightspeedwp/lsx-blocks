@@ -30,6 +30,7 @@ class Block_Setup {
 	public function init() {
 		add_action( 'init', array( $this, 'register_block_pattern_category' ) );
 		add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'block_editor_assets' ), 5 );
 	}
 
 	/**
@@ -55,5 +56,20 @@ class Block_Setup {
 			'title' => __( 'LSX Blocks', 'lsx-blocks' ),			
 		);
 		return $block_categories;
+	}
+
+	/**
+	 * Enqueue assets for backend editor
+	 *
+	 * @since 1.0.0
+	 */
+	public function block_editor_assets() {
+		// Load the compiled blocks into the editor.
+		wp_enqueue_script(
+			'lsx-blocks-block-js',
+			LSX_BLOCKS_URL . 'dist/blocks.js',
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-edit-post', 'wp-plugins' ),
+			LSX_BLOCKS_VER
+		);
 	}
 }
