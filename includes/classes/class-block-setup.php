@@ -18,6 +18,13 @@ namespace LSX\Blocks\Classes;
 class Block_Setup {
 
 	/**
+	 * Holds the array of block stylesheets
+	 *
+	 * @var array $block_assets Holds the block assets array.
+	 */
+	public $block_assets = array();
+
+	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
 	 * @since 1.0.0
@@ -31,6 +38,7 @@ class Block_Setup {
 		add_action( 'init', array( $this, 'register_block_pattern_category' ) );
 		add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 10, 2 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'block_editor_assets' ), 5 );
+		add_action( 'after_setup_theme', array( $this, 'enqueue_block_styles' ), 10 );
 	}
 
 	/**
@@ -71,5 +79,39 @@ class Block_Setup {
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-edit-post', 'wp-plugins' ),
 			LSX_BLOCKS_VER
 		);
+	}
+
+	/**
+	 * Returns an array of the block assets.
+	 *
+	 * @return array
+	 */
+	private function get_block_assets() {
+		$this->block_assets = array(
+			'lsx/loginout' => array(
+				'handle' => 'lsx-blocks-loginout',
+				'src'    => LSX_BLOCKS_URL . 'dist/blocks/loginout/loginout.css',
+				'path'   => LSX_BLOCKS_PATH . 'dist/blocks/loginout/loginout.css',
+			),
+		);
+		return $this->block_assets;
+	}
+
+	/**
+	 * Registers our block specific styles.
+	 *
+	 * @return void
+	 */
+	public function enqueue_block_styles() {
+		foreach ( $this->get_block_assets() as $block_name => $block_asset ) {
+			wp_enqueue_block_style(
+				$block_name,
+				array(
+					'handle' => $block_asset['handle'],
+					'src'    => $block_asset['src'],
+					'path'   => $block_asset['path'],
+				),
+			);
+		}
 	}
 }
