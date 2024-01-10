@@ -1,0 +1,49 @@
+.logged-out.is-style-horizontal label{
+    display:none;
+}
+
+.logged-out.is-style-horizontal p{position: relative;}
+.logged-out.is-style-horizontal input{
+    position: relative;
+    font-size: 20px;
+    max-width: 120px;
+    margin-right: 5px;
+}
+
+.logged-out.is-style-horizontal .login-username::before {
+        content : "Username or Email Address" ;
+        position: absolute;
+        z-index: 1;
+        color: #000;
+        width: calc(100% - 10px);
+        background: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        pointer-events: none;
+        font-family: arial;
+        font-style: italic;
+        font-size: .75rem;
+        line-height: 1;
+        box-sizing: border-box;
+      }
+.logged-out.is-style-horizontal .login-password::before {
+        content : "Password" ;
+        position: absolute;
+        z-index: 1;
+        color: #000;
+        width: calc(100% - 10px);
+        background: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        pointer-events: none;
+        font-family: arial;
+        font-style: italic;
+        font-size: .75rem;
+        line-height: 1;
+        box-sizing: border-box;
+      }
+
+      .logged-out.is-style-horizontal form:focus .login-password::before,  .logged-out.is-style-horizontal form:focus .login-username::before{
+        display: none!important;
+      }
+.logged-out.is-style-horizontal form p{display:inline-block;}
