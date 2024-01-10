@@ -33,11 +33,6 @@ class Core {
 	public $block_functions;
 
 	/**
-	 * @var object LSX\Blocks\Classes\Frontend();
-	 */
-	public $frontend;
-
-	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 */
 	public function __construct() {
@@ -61,8 +56,5 @@ class Core {
 		require_once( LSX_BLOCKS_PATH . 'includes/classes/class-block-functions.php' );
 		$this->block_functions = new Block_Functions();
 		$this->block_functions->init();
-
-		require_once( LSX_BLOCKS_PATH . 'includes/classes/class-frontend.php' );
-		$this->frontend = new Frontend();
 	}
 }
