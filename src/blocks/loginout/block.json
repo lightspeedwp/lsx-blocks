@@ -6,7 +6,7 @@
 	"category": "theme",
 	"description": "Show a login form & logout link.",
 	"keywords": [ "login", "logout", "form", "lsx" ],
-	"textdomain": "lsx-login",
+	"textdomain": "lsx-blocks",
 	"attributes": {
 		"displayLoginAsForm": {
 			"type": "boolean",
