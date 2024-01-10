@@ -9,6 +9,7 @@ import './blocks/related-posts/index.js';
 
 // Custom Blocks
 import './blocks/block-accordion/index.js';
+import './blocks/loginout/index.js';
 
 // Deprecated
 import './deprecated/block-container/index.js';
