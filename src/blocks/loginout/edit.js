@@ -35,13 +35,7 @@ export default function LoginOutEdit({
 							displayLoginAsForm: !displayLoginAsForm
 						})
 					}
-				)
-			),
-			createElement(
-				PanelBody,
-				{
-					title: __('Modal')
-				},
+				),
 				createElement(
 					ToggleControl,
 					{

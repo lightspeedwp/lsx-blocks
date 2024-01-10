@@ -26,7 +26,7 @@ class Block_Functions {
 	public function init() {
 		add_filter( 'pre_render_block', array( $this, 'pre_render_related_block' ), 10, 2 );
 		add_filter( 'pre_render_block', array( $this, 'pre_render_featured_block' ), 10, 2 );
-		add_action( 'init', array( $this, 'register_block_core_loginout' ) );
+		add_action( 'init', array( $this, 'register_block_loginout' ) );
 	}
 
 	/**
@@ -129,11 +129,11 @@ class Block_Functions {
 	/**
 	 * Registers the `lsx/loginout` block on server.
 	 */
-	public function register_block_core_loginout() {
+	public function register_block_loginout() {
 		register_block_type_from_metadata(
 			LSX_BLOCKS_PATH . 'dist/blocks/loginout/block.json',
 			array(
-				'render_callback' => 'render_block_core_loginout',
+				'render_callback' => array( $this, 'render_block_loginout' ),
 			)
 		);
 	}
@@ -145,12 +145,12 @@ class Block_Functions {
 	 *
 	 * @return string Returns the login-out link or form.
 	 */
-	public function render_block_core_loginout( $attributes ) {
+	public function render_block_loginout( $attributes ) {
 		// Build the redirect URL.
 		$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	
 		$classes  = is_user_logged_in() ? 'logged-in' : 'logged-out';
-		$classes .= 'wp-block-loginout';
+		$classes .= ' wp-block-loginout';
 
 		$contents = wp_loginout(
 			isset( $attributes['redirectToCurrent'] ) && $attributes['redirectToCurrent'] ? $current_url : '',
@@ -279,8 +279,7 @@ class Block_Functions {
 			$login_form_top .
 			sprintf(
 				'<p class="login-username">
-					<label for="%1$s">%2$s</label>
-					<input type="text" name="log" id="%1$s" autocomplete="username" class="input" value="%3$s" size="20" />
+					<input type="text" name="log" id="%1$s" autocomplete="username" class="input" value="%3$s" size="20" placeholder="%2$s" />
 				</p>',
 				esc_attr( $args['id_username'] ),
 				esc_html( $args['label_username'] ),
@@ -288,8 +287,7 @@ class Block_Functions {
 			) .
 			sprintf(
 				'<p class="login-password">
-					<label for="%1$s">%2$s</label>
-					<input type="password" name="pwd" id="%1$s" autocomplete="current-password" spellcheck="false" class="input" value="" size="20" />
+					<input type="password" name="pwd" id="%1$s" autocomplete="current-password" spellcheck="false" class="input" value="" size="20"  placeholder="%2$s"/>
 				</p>',
 				esc_attr( $args['id_password'] ),
 				esc_html( $args['label_password'] )
