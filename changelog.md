@@ -1,5 +1,14 @@
 # Change log
 
+## [1.3.4](https://github.com/lightspeeddevelopment/lsx-blocks/releases/tag/1.3.4) - IN DEVELOPMENT
+
+### Added
+- An "LSX Login/out" block with a standard set of settings. Based on the WP Login/out block.
+
+### Removed
+- Unused functions and files have been removed from the install.
+- Refactored the Frontend class into the Setup class.
+
 ## [1.3.3](https://github.com/lightspeeddevelopment/lsx-blocks/releases/tag/1.3.3) - 2023-08-09
 
 ### Security
