@@ -6,7 +6,7 @@
 		"build-blocks": "wp-scripts build src/blocks.js --output-path=dist"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^31.0.0",
+		"@wordpress/scripts": "^32.0.0",
 		"classnames": "^2.3.2",
 		"webpack": "^5.75.0"
 	}
